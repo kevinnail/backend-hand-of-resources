@@ -1,0 +1,73 @@
+const pool = require('../lib/utils/pool');
+const setup = require('../data/setup');
+const request = require('supertest');
+const app = require('../lib/app');
+
+describe('people controller', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  it('GET /animals should return a list of all animals', async () => {
+    const resp = await request(app).get('/animals');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "1",
+          "name": "Eastern dwarf mongoose",
+          "sci_name": "Helogale undulata",
+        },
+        Object {
+          "id": "2",
+          "name": "Cape fox",
+          "sci_name": "Vulpes chama",
+        },
+        Object {
+          "id": "3",
+          "name": "Tawny eagle",
+          "sci_name": "Anitibyx armatus",
+        },
+        Object {
+          "id": "4",
+          "name": "Reedbuck, bohor",
+          "sci_name": "Redunca redunca",
+        },
+        Object {
+          "id": "5",
+          "name": "Monitor lizard",
+          "sci_name": "Varanus sp.",
+        },
+        Object {
+          "id": "6",
+          "name": "Stork, yellow-billed",
+          "sci_name": "Mycteria ibis",
+        },
+        Object {
+          "id": "7",
+          "name": "Lynx, african",
+          "sci_name": "Felis caracal",
+        },
+        Object {
+          "id": "8",
+          "name": "Boat-billed heron",
+          "sci_name": "Cochlearius cochlearius",
+        },
+        Object {
+          "id": "9",
+          "name": "Starling, red-shouldered glossy",
+          "sci_name": "Lamprotornis nitens",
+        },
+        Object {
+          "id": "10",
+          "name": "Catfish, blue",
+          "sci_name": "Ictalurus furcatus",
+        },
+      ]
+    `);
+  });
+
+  afterAll(() => {
+    pool.end();
+  });
+});
