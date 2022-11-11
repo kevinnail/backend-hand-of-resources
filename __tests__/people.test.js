@@ -68,7 +68,7 @@ describe('people controller', () => {
     `);
   });
 
-  it('GET /people/1 should return the details of one person', async () => {
+  it.skip('GET /people/1 should return the details of one person', async () => {
     const resp = await request(app).get('/people/1');
     expect(resp.status).toEqual(200);
     expect(resp.body).toMatchInlineSnapshot(`
