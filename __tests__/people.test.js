@@ -80,7 +80,7 @@ describe('people controller', () => {
     `);
   });
 
-  it(' POST /people should create a new person', async () => {
+  it.skip(' POST /people should create a new person', async () => {
     const newPerson = {
       first_name: 'Super',
       last_name: 'Duper',
@@ -93,6 +93,14 @@ describe('people controller', () => {
       id: expect.any(String),
       ...newPerson,
     });
+  });
+
+  it('PUT /people/:id should update an existing soda', async () => {
+    const resp = await request(app).put('/people/1').send({
+      first_name: 'Helga',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.first_name).toBe('Helga');
   });
 
   afterAll(() => {
