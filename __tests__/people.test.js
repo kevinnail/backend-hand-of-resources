@@ -80,6 +80,21 @@ describe('people controller', () => {
     `);
   });
 
+  it(' POST /people should create a new person', async () => {
+    const newPerson = {
+      first_name: 'Super',
+      last_name: 'Duper',
+    };
+
+    const resp = await request(app).post('/people').send(newPerson);
+
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPerson,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
