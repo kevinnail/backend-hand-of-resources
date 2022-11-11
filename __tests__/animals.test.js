@@ -70,6 +70,13 @@ describe('people controller', () => {
   it('GET /animals/1 should return one animal', async () => {
     const resp = await request(app).get('/animals/1');
     expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "name": "Eastern dwarf mongoose",
+        "sci_name": "Helogale undulata",
+      }
+    `);
   });
 
   afterAll(() => {
