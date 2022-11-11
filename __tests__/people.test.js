@@ -95,12 +95,21 @@ describe('people controller', () => {
     });
   });
 
-  it('PUT /people/:id should update an existing soda', async () => {
+  it.skip('PUT /people/:id should update an existing soda', async () => {
     const resp = await request(app).put('/people/1').send({
       first_name: 'Helga',
     });
     expect(resp.status).toBe(200);
     expect(resp.body.first_name).toBe('Helga');
+  });
+
+  it('DELETE /:id should delete a person', async () => {
+    const resp = await request(app).delete('/people/1');
+    expect(resp.status).toBe(200);
+
+    const personResp = await request(app).get('/people/1');
+
+    expect(personResp.status).toBe(404);
   });
 
   afterAll(() => {
