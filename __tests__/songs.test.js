@@ -81,6 +81,21 @@ describe('songs controller', () => {
     `);
   });
 
+  it('GET /:id should return a single song', async () => {
+    const resp = await request(app).get('/songs/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "album": "Aenima",
+        "band": "TOOL",
+        "id": "1",
+        "length": "13:47",
+        "name": "Third Eye",
+        "year": "1996",
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
