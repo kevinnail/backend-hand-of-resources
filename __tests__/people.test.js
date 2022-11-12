@@ -95,7 +95,7 @@ describe('people controller', () => {
     });
   });
 
-  it.skip('PUT /people/:id should update an existing soda', async () => {
+  it.skip('PUT /people/:id should update an existing person', async () => {
     const resp = await request(app).put('/people/1').send({
       first_name: 'Helga',
     });

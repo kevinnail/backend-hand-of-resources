@@ -79,19 +79,24 @@ describe('people controller', () => {
     `);
   });
 
-  it('POST /animals should create a new person', async () => {
+  it.skip('POST /animals should create a new animal', async () => {
     const newAnimal = {
       name: 'Big Furry Guy',
       sci_name: 'Biggus Furrigusolous',
     };
-
     const resp = await request(app).post('/animals').send(newAnimal);
-
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
       ...newAnimal,
     });
+  });
+
+  it('PUT /animals/:id should update an existing animal', async () => {
+    const resp = await request(app).put('/animals/1').send({ name: 'Manimal' });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('Manimal');
   });
 
   afterAll(() => {
