@@ -10,7 +10,7 @@ describe('people controller', () => {
   });
 
   it.skip('GET /people should return a list of all the people', async () => {
-    const resp = await request(app).get('/people');
+    const resp = await request(app).get('/');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
       Array [
