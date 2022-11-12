@@ -67,7 +67,7 @@ describe('people controller', () => {
     `);
   });
 
-  it('GET /animals/1 should return one animal', async () => {
+  it.skip('GET /animals/1 should return one animal', async () => {
     const resp = await request(app).get('/animals/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -77,6 +77,21 @@ describe('people controller', () => {
         "sci_name": "Helogale undulata",
       }
     `);
+  });
+
+  it('POST /animals should create a new person', async () => {
+    const newAnimal = {
+      name: 'Big Furry Guy',
+      sci_name: 'Biggus Furrigusolous',
+    };
+
+    const resp = await request(app).post('/animals').send(newAnimal);
+
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newAnimal,
+    });
   });
 
   afterAll(() => {
