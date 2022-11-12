@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS animals;
+DROP TABLE IF EXISTS songs;
 
 
 CREATE TABLE people(
@@ -15,6 +16,17 @@ CREATE TABLE animals(
     name VARCHAR NOT NULL,
     sci_name VARCHAR NOT NULL
 );
+
+
+CREATE TABLE songs(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    band VARCHAR NOT NULL,
+    album VARCHAR NOT NULL,
+    year BIGINT NOT NULL,
+    length VARCHAR NOT NULL
+);
+
 
 
 INSERT INTO
@@ -46,3 +58,17 @@ VALUES
 ('Starling, red-shouldered glossy','Lamprotornis nitens'),
 ('Catfish, blue','Ictalurus furcatus');
 
+
+
+    INSERT INTO
+        songs(name, band, album, year,length)
+    VALUES
+
+ ('Third Eye','TOOL','Aenima',1996,'13:47'),
+  ('Come as You Are','Nirvana','Nevermind',1991,'3:39'),
+  ('7empest','TOOL','Fear Inoculum',2019,'15:44'),
+  ('Frizzle Fry','Primus','Frizzle Fry',1990,'6:04'),
+  ('Heart Shaped Box','Nirvana','In Utero',1993,'4:41'),
+  ('Pushit','TOOL','Aenima',1996,'9:55'),
+  ('Smells Like Teen Spirit','Nirvana','Nevermind',1991,'5:01'),
+  ('Here Come the Bastards','Primus','Sees of Cheese',1991,'2:55');
