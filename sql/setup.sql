@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS songs;
+DROP TABLE IF EXISTS customer_data;
 
 
 CREATE TABLE people(
@@ -27,7 +28,11 @@ CREATE TABLE songs(
     length VARCHAR NOT NULL
 );
 
-
+CREATE TABLE customer_data(
+    id  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    cust_user_nm VARCHAR NOT NULL,
+    cc_num BIGINT NOT NULL
+);
 
 INSERT INTO
     people (first_name,last_name)
@@ -72,3 +77,19 @@ VALUES
   ('Pushit','TOOL','Aenima',1996,'9:55'),
   ('Smells Like Teen Spirit','Nirvana','Nevermind',1991,'5:01'),
   ('Here Come the Bastards','Primus','Sees of Cheese',1991,'2:55');
+
+
+    INSERT INTO
+        customer_data(cust_user_nm,cc_num)
+    VALUES
+
+  ('ckobera0','5108757699184151'),
+('cjersh1','5048375993868172'),
+('tjennings2','5108753611387246'),
+('hbisseker3','5108759652927378'),
+('cdocket4','5048371811400272'),
+('tsally5','5108751063017188'),
+('eclery6','5108752124133998'),
+('belsay7','5108751733756645'),
+('ifallow8','5048376592220609'),
+('cjupe9','5108753866979622');
