@@ -119,7 +119,7 @@ describe('songs controller', () => {
     expect(resp.body.name).toEqual('New Songalicious');
   });
 
-  it('DELETE /songs/1 should delete an existing song', async () => {
+  it.skip('DELETE /songs/1 should delete an existing song', async () => {
     const deleteSong = await request(app).delete('/songs/1');
     expect(deleteSong.status).toBe(200);
 

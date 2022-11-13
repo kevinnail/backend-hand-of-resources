@@ -28,7 +28,7 @@ CREATE TABLE songs(
     length VARCHAR NOT NULL
 );
 
-CREATE TABLE customer_data(
+CREATE TABLE customers(
     id  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     cust_user_nm VARCHAR NOT NULL,
     cc_num BIGINT NOT NULL
@@ -80,7 +80,7 @@ VALUES
 
 
     INSERT INTO
-        customer_data(cust_user_nm,cc_num)
+        customers(cust_user_nm,cc_num)
     VALUES
 
   ('ckobera0','5108757699184151'),
