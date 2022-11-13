@@ -113,10 +113,18 @@ describe('songs controller', () => {
     });
   });
 
-  it('PUT /songs/1 should update an existing song', async () => {
+  it.skip('PUT /songs/1 should update an existing song', async () => {
     const resp = await request(app).put('/songs/1').send({ name: 'New Songalicious' });
     expect(resp.status).toBe(200);
     expect(resp.body.name).toEqual('New Songalicious');
+  });
+
+  it('DELETE /songs/1 should delete an existing song', async () => {
+    const deleteSong = await request(app).delete('/songs/1');
+    expect(deleteSong.status).toBe(200);
+
+    const resp = await request(app).get('/songs/1');
+    expect(resp.status).toBe(404);
   });
 
   afterAll(() => {
