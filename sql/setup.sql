@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS songs;
 DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS businesses;
 
 
 CREATE TABLE people(
@@ -33,6 +34,19 @@ CREATE TABLE customers(
     cust_user_nm VARCHAR NOT NULL,
     cc_num BIGINT NOT NULL
 );
+
+
+CREATE TABLE businesses(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    city VARCHAR NOT NULL,
+    country VARCHAR NOT NULL
+);
+
+
+
+
+
 
 INSERT INTO
     people (first_name,last_name)
@@ -93,3 +107,20 @@ VALUES
 ('belsay7','5108751733756645'),
 ('ifallow8','5048376592220609'),
 ('cjupe9','5108753866979622');
+
+
+    INSERT INTO
+        businesses(name, city, country)
+    VALUES
+
+
+('Buzzbean','Nandayure','CR'),
+('Fivespan','Ilovka','RU'),
+('Twimbo','Mulatupo','PA'),
+('Riffpedia','Baimajing','CN'),
+('Kwilith','Eucaliptus','BO'),
+('Bubblemix','Rangmanten','ID'),
+('Riffpedia','Kristiansand S','NO'),
+('Jaxspan','Xiangzhou','CN'),
+('Shuffledrive','Jardinópolis','BR'),
+('Fatz,Denver','Superbulous','US');
