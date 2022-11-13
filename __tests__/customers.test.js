@@ -8,7 +8,7 @@ describe('customers controller', () => {
     return setup(pool);
   });
 
-  it('GET /customers should return a list of customers', async () => {
+  it.skip('GET /customers should return a list of customers', async () => {
     const resp = await request(app).get('/customers');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -64,6 +64,18 @@ describe('customers controller', () => {
           "id": "10",
         },
       ]
+    `);
+  });
+
+  it('/:id', async () => {
+    const resp = await request(app).get('/customers/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "cc_num": "5108757699184151",
+        "cust_user_nm": "ckobera0",
+        "id": "1",
+      }
     `);
   });
 
