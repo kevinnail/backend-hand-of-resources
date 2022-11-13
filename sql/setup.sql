@@ -3,7 +3,7 @@
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS songs;
-DROP TABLE IF EXISTS customer_data;
+DROP TABLE IF EXISTS customers;
 
 
 CREATE TABLE people(

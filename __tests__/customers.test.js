@@ -67,7 +67,7 @@ describe('customers controller', () => {
     `);
   });
 
-  it('/:id', async () => {
+  it.skip('GET /customers/:id should return a single customers', async () => {
     const resp = await request(app).get('/customers/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -77,6 +77,20 @@ describe('customers controller', () => {
         "id": "1",
       }
     `);
+  });
+
+  it('POST /customers should create a new customer', async () => {
+    const newCustomer = {
+      cust_user_nm: 'superduper',
+      cc_num: '5108757699184151',
+    };
+
+    const resp = await request(app).post('/customers').send(newCustomer);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newCustomer,
+    });
   });
 
   afterAll(() => {
