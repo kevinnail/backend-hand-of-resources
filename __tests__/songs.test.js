@@ -96,7 +96,7 @@ describe('songs controller', () => {
     `);
   });
 
-  it('POST /songs should create a new song', async () => {
+  it.skip('POST /songs should create a new song', async () => {
     const newSong = {
       name: 'The',
       band: 'New',
@@ -111,6 +111,12 @@ describe('songs controller', () => {
       id: expect.any(String),
       ...newSong,
     });
+  });
+
+  it('PUT /songs/1 should update an existing song', async () => {
+    const resp = await request(app).put('/songs/1').send({ name: 'New Songalicious' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('New Songalicious');
   });
 
   afterAll(() => {
