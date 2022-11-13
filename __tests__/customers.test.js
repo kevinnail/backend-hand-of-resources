@@ -79,7 +79,7 @@ describe('customers controller', () => {
     `);
   });
 
-  it('POST /customers should create a new customer', async () => {
+  it.skip('POST /customers should create a new customer', async () => {
     const newCustomer = {
       cust_user_nm: 'superduper',
       cc_num: '5108757699184151',
@@ -91,6 +91,12 @@ describe('customers controller', () => {
       id: expect.any(String),
       ...newCustomer,
     });
+  });
+
+  it('PUT /customers/1 should update an existing customer', async () => {
+    const resp = await request(app).put('/customers/1').send({ cust_user_nm: 'newUserName' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.cust_user_nm).toBe('newUserName');
   });
 
   afterAll(() => {
