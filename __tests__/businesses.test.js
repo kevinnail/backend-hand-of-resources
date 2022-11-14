@@ -90,6 +90,20 @@ describe('businesses controller', () => {
     `);
   });
 
+  it('POST /businesses should create a new business', async () => {
+    const newBiz = {
+      city: 'Spokane',
+      country: 'US',
+      name: 'Bizorific',
+    };
+    const resp = await request(app).post('/businesses').send(newBiz);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newBiz,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
