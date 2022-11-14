@@ -90,7 +90,7 @@ describe('businesses controller', () => {
     `);
   });
 
-  it('POST /businesses should create a new business', async () => {
+  it.skip('POST /businesses should create a new business', async () => {
     const newBiz = {
       city: 'Spokane',
       country: 'US',
@@ -102,6 +102,12 @@ describe('businesses controller', () => {
       id: expect.any(String),
       ...newBiz,
     });
+  });
+
+  it('PUT /businesses/1 should update an existing business', async () => {
+    const resp = await request(app).put('/businesses/1').send({ name: 'SuperNewBizName' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('SuperNewBizName');
   });
 
   afterAll(() => {
