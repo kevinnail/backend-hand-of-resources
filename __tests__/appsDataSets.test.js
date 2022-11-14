@@ -67,7 +67,7 @@ describe('apps controller', () => {
     `);
   });
 
-  it('GET apps/1 should return 1 app', async () => {
+  it.skip('GET /apps/1 should return 1 app', async () => {
     const resp = await request(app).get('/apps/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -79,6 +79,16 @@ describe('apps controller', () => {
         },
       ]
     `);
+  });
+
+  it('POST /apps should return a new app', async () => {
+    const newApp = { name: 'SuperApp', version: '3.4.5', app_id_bundle: 'SuperId' };
+    const resp = await request(app).post('/apps').send(newApp);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newApp,
+    });
   });
 
   afterAll(() => {
