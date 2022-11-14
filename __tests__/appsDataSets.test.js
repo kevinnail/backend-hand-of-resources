@@ -8,7 +8,7 @@ describe('apps controller', () => {
     return setup(pool);
   });
 
-  it('GET /apps should return a list of apps', async () => {
+  it.skip('GET /apps should return a list of apps', async () => {
     const resp = await request(app).get('/apps');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -61,6 +61,20 @@ describe('apps controller', () => {
         Object {
           "id": "10",
           "name": "10",
+          "version": "0.3.7",
+        },
+      ]
+    `);
+  });
+
+  it('GET apps/1 should return 1 app', async () => {
+    const resp = await request(app).get('/apps/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "1",
+          "name": "1",
           "version": "0.3.7",
         },
       ]
