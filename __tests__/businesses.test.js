@@ -77,7 +77,7 @@ describe('businesses controller', () => {
     `);
   });
 
-  it('GET /businesses/1 should return one business', async () => {
+  it.skip('GET /businesses/1 should return one business', async () => {
     const resp = await request(app).get('/businesses/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
