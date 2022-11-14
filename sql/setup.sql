@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS songs;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS businesses;
+DROP TABLE IF EXISTS apps;
 
 
 CREATE TABLE people(
@@ -43,7 +44,12 @@ CREATE TABLE businesses(
     country VARCHAR NOT NULL
 );
 
-
+    CREATE TABLE apps(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    version VARCHAR NOT NULL,
+    app_id_bundle VARCHAR NOT NULL
+);
 
 
 
@@ -124,3 +130,18 @@ VALUES
 ('Jaxspan','Xiangzhou','CN'),
 ('Shuffledrive','Jardinópolis','BR'),
 ('Fatz,Denver','Superbulous','US');
+
+
+INSERT INTO 
+        apps(name, version, app_id_bundle)
+VALUES
+('Tampflex','0.3.7','com.cisco.Sonair'),
+('Domainer','0.9.3','com.aol.Asoka'),
+('Vagram','6.3','org.unesco.Ronstring'),
+('Prodder','0.8.3','com.purevolume.Pannier'),
+('Fixflex','4.0','com.mediafire.Asoka'),
+('Pannier','0.85','net.a8.Konklab'),
+('Daltfresh','8.5','com.slate.Konklab'),
+('Flowdesk','7.3','org.redcross.Ronstring'),
+('Lotlux','3.6.0','au.com.smh.Greenlam'),
+('Home Ing','0.3.7','net.a8.Solarbreeze');
