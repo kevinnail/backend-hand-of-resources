@@ -110,7 +110,7 @@ describe('businesses controller', () => {
     expect(resp.body.name).toBe('SuperNewBizName');
   });
 
-  it('DELETE /businesses/1 should delete an existing business', async () => {
+  it.skip('DELETE /businesses/1 should delete an existing business', async () => {
     const resp = await request(app).delete('/businesses/1');
     expect(resp.status).toBe(200);
     const delBiz = await request(app).get('/businesses/1');
