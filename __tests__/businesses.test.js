@@ -8,7 +8,7 @@ describe('businesses controller', () => {
     return setup(pool);
   });
 
-  it('GET /businesses should return a list of businesses', async () => {
+  it.skip('GET /businesses should return a list of businesses', async () => {
     const resp = await request(app).get('/businesses');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -74,6 +74,19 @@ describe('businesses controller', () => {
           "name": "Fatz,Denver",
         },
       ]
+    `);
+  });
+
+  it('GET /businesses/1 should return one business', async () => {
+    const resp = await request(app).get('/businesses/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "city": "Nandayure",
+        "country": "CR",
+        "id": "1",
+        "name": "Buzzbean",
+      }
     `);
   });
 
