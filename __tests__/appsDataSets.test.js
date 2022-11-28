@@ -97,7 +97,7 @@ describe('apps controller', () => {
     expect(resp.body.name).toBe('Superduper');
   });
 
-  it('DELETE /apps/1 should delete an existing app', async () => {
+  it.skip('DELETE /apps/1 should delete an existing app', async () => {
     const resp = await request(app).delete('/apps/1');
     expect(resp.status).toBe(200);
     const data = await request(app).get('/apps/1');
