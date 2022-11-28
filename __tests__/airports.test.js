@@ -8,7 +8,7 @@ describe('airport controller', () => {
     return setup(pool);
   });
 
-  it.skip('GET /airports should return a list of airports', async () => {
+  it('GET /airports should return a list of airports', async () => {
     const resp = await request(app).get('/airports');
 
     expect(resp.status).toBe(200);
