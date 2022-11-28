@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS songs;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS businesses;
 DROP TABLE IF EXISTS apps;
+DROP TABLE IF EXISTS airports;
 
 
 CREATE TABLE people(
@@ -44,14 +45,21 @@ CREATE TABLE businesses(
     country VARCHAR NOT NULL
 );
 
-    CREATE TABLE apps(
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    version VARCHAR NOT NULL,
-    app_id_bundle VARCHAR NOT NULL
+CREATE TABLE apps(
+id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+name VARCHAR NOT NULL,
+version VARCHAR NOT NULL,
+app_id_bundle VARCHAR NOT NULL
 );
 
+CREATE TABLE airports(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    code VARCHAR NOT NULL,
+    country_code VARCHAR NOT NULL,
+    elevation BIGINT NOT NULL
 
+);
 
 
 INSERT INTO
@@ -145,3 +153,17 @@ VALUES
 ('Flowdesk','7.3','org.redcross.Ronstring'),
 ('Lotlux','3.6.0','au.com.smh.Greenlam'),
 ('Home Ing','0.3.7','net.a8.Solarbreeze');
+
+    INSERT INTO
+    airports(name,code,country_code,elevation)
+    VALUES
+('Islay Airport','ILY','GB','56'),
+('Labuan Airport','LBU','MY','101'),
+('Seldovia Airport','SOV','US','29'),
+('Nowata Airport','NWT','PG','2040'),
+('Chapais Airport','YMT','CA','1270'),
+('Flensburg-Schäferhaus Airport','FLF','DE','131'),
+('Dryden Regional Airport','YHD','CA','1354'),
+('Waca Airport','WAC','ET','4200'),
+('Gonder Airport','GDQ','ET','6449'),
+('Martindale Army Heliport','MDA','US','674');
